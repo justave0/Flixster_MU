@@ -1,6 +1,7 @@
 package com.example.flixster.adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.res.Configuration;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,10 +13,11 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
-import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions;
-import com.bumptech.glide.request.RequestOptions;
 import com.example.flixster.Models.Movie;
+import com.example.flixster.MovieDetailsActivity;
 import com.example.flixster.R;
+
+import org.parceler.Parcels;
 
 import java.util.List;
 
@@ -35,17 +37,6 @@ public class MovieAdapters extends RecyclerView.Adapter<MovieAdapters.ViewHolder
         View movieView = LayoutInflater.from(context).inflate(R.layout.item_movie, parent, false);
         return new ViewHolder(movieView);
 
-
-//        ImageView ivPlaceholderBackground;
-//        Glide.with(this)
-//                .load("http://via.placeholder.com/300.png")
-//                .override(300, 200)
-//                .into(ivPlaceholderBackground);
-//        Glide.with(this)
-//                .load("http://via.placeholder.com/300.png")
-//                .placeholder(R.drawable.backdrop_placeholder)
-//                .error(R.drawable.imagenotfound)
-//                .into(ivPlaceholderBackground);
     }
 
     @Override
@@ -59,18 +50,19 @@ public class MovieAdapters extends RecyclerView.Adapter<MovieAdapters.ViewHolder
         return movies.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder{
+    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
 
         TextView tvTitle;
         TextView tvOverview;
         ImageView ivPoster;
+
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             tvTitle = itemView.findViewById(R.id.tvTitle);
             tvOverview = itemView.findViewById((R.id.tvOverview));
             ivPoster = itemView.findViewById((R.id.ivPoster));
-
+            itemView.setOnClickListener(this);
         }
 
         public void bind(Movie movie) {
@@ -96,6 +88,17 @@ public class MovieAdapters extends RecyclerView.Adapter<MovieAdapters.ViewHolder
                     .placeholder(placeholderPic)
                     .override(placeholderWidth, placeholderHeight)
                     .into(ivPoster);
+        }
+
+        @Override
+        public void onClick(View v) {
+            int position = getAdapterPosition();
+            if (position != RecyclerView.NO_POSITION){
+                Movie movie = movies.get(position);
+                Intent intent = new Intent(context, MovieDetailsActivity.class);
+                intent.putExtra(Movie.class.getSimpleName(), Parcels.wrap(movie));
+                context.startActivity(intent);
+            }
         }
     }
 

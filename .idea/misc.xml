@@ -8,7 +8,8 @@
         <entry key="app/src/main/res/drawable/imagenotfound.xml" value="0.181" />
         <entry key="app/src/main/res/drawable/placeholder.xml" value="0.181" />
         <entry key="app/src/main/res/layout-land/item_movie.xml" value="0.146954986760812" />
-        <entry key="app/src/main/res/layout/activity_main.xml" value="0.335" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.11674896240234375" />
+        <entry key="app/src/main/res/layout/activity_movie_details.xml" value="0.12764434814453127" />
         <entry key="app/src/main/res/layout/item_movie.xml" value="0.25611967361740706" />
       </map>
     </option>
