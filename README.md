@@ -30,8 +30,7 @@ The following **additional** features are implemented:
 
 Here's a walkthrough of implemented user stories:
 
-<img src='ezgif-4-555d728457.gif' width='250' alt='Video Walkthrough' />
-
+<img src="ezgif-4-555d728457.gif" width=250><br>
 GIF created with [Kap](https://getkap.co/).
 
 ## Notes
